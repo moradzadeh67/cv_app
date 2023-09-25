@@ -37,6 +37,7 @@ class Aplication extends StatelessWidget {
       ),
     );
   }
+
   Widget _getHeader() {
     return Column(
       children: [
@@ -57,18 +58,103 @@ class Aplication extends StatelessWidget {
         SizedBox(
           height: 15,
         ),
-        Text(
-          'عاشق برنامه نویسی موبایل و اندروید و فلاتر ، دوست داریم هرچیزی را که یاد میگیریم یاد بدیم',
-          textAlign: TextAlign.center,
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Text(
+            'عاشق برنامه نویسی موبایل و اندروید و فلاتر ، دوست داریم هرچیزی را که یاد میگیریم یاد بدیم',
+            textAlign: TextAlign.center,
+          ),
         ),
-        SizedBox(height: 12,),
-        _getRowIcons()
-
+        SizedBox(
+          height: 12,
+        ),
+        _getRowIcons(),
+        SizedBox(
+          height: 12,
+        ),
+        _getSkillCard(),
+        SizedBox(
+          height: 12,
+        ),
+        _getResume(),
       ],
     );
-
   }
-  Widget _getRowIcons(){
+
+  Widget _getResume() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      width: double.infinity,
+      color: Colors.grey[200],
+      child: Column(
+        children: [
+          Text(
+            'سابقه کاری من',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          _getHistoryColumn(),
+        ],
+      ),
+    );
+  }
+
+  Widget _getHistoryColumn() {
+    var list = [
+      'برنامه نویسی اندروید زرین پال از سال 97',
+      'هشت ترم ورکشاب عملی اندروید دانشگاه تهران',
+      'چنل آموزشی یوتیوب از سال 2017',
+      'مدرس دوره اندروید هاروارد (Iran cs50x)',
+      'مدرس دوره اندروید از سال 93',
+      'مدرس و بنیان گذار سایت ExpertFlutter',
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        SizedBox(
+          width: double.infinity,
+          height: 20,
+        ),
+        for (var title in list)
+          Text(
+            title,
+            textDirection: TextDirection.rtl,
+          ),
+      ],
+    );
+  }
+
+  Widget _getSkillCard() {
+    var list = ['flutter', 'android', 'kotlin', 'java', 'dart'];
+    return Wrap(
+      children: [
+        for (var slill in list)
+          Card(
+            elevation: 6,
+            child: Column(
+              children: [
+                Container(
+                  height: 80,
+                  child: Image(
+                    image: AssetImage('images/$slill.png'),
+                    width: 60,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text('$slill'),
+                ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _getRowIcons() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -96,7 +182,3 @@ class Aplication extends StatelessWidget {
     );
   }
 }
-
-
-
-
